@@ -4,10 +4,7 @@ from kivy.properties import NumericProperty, ReferenceListProperty, ObjectProper
 from kivy.vector import Vector
 from kivy.clock import Clock
 from random import randint
-#Video
-#import cv2
-#from kivy.uix.image import Image
-#from kivy.graphics.texture import Texture
+
 
 
 class PongPaddle(Widget):
@@ -47,9 +44,7 @@ class PongGame(Widget):
         if (self.ball.x < 10) or (self.ball.x > self.width - 60):
             self.ball.velocity_x *= -1
         self.paddle.bounce_ball(self.ball, self.paddle)
-        #global loc
-        #self.paddle.center_x = int((self.width / 520) *(520- loc))
-
+       
     def on_touch_move(self, touch):
         self.paddle.center_x = touch.x
 
@@ -57,13 +52,7 @@ class PongGame(Widget):
 
 class PingApp(App):
     def build(self):
-        # Video
-        #global loc
-        #loc =0
-        #self.image = Image()
-        #self.face_facade = cv2.CascadeClassifier("haarcascade_frontal_face.xml")
-        #self.capture = cv2.VideoCapture(0)
-        #Clock.schedule_interval(self.load_video, 1.0 / 30.0)
+        
 
         #Game
         game = PongGame()
@@ -72,21 +61,6 @@ class PingApp(App):
 
         return game
 
-    #def load_video(self, *args):
-        #ret, frame = self.capture.read()
-        #frame initialize
-        #self.image_frame = frame
-        #gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        #object = self.face_facade.detectMultiScale(gray, 1.3, 4)
-        #for (x, y, w, h) in object:
-            #global loc
-            #loc = x
-            #cv2.rectangle(gray, (x, y), (x + w, y + h), (255, 0, 0), 5)
-            #print(x,y)
-        #buffer = cv2.flip(gray, -1).tobytes()
-        #texture = Texture.create(size=(gray.shape[1], gray.shape[0]), colorfmt = 'luminance')
-        #texture.blit_buffer(buffer, colorfmt='luminance', bufferfmt='ubyte')
-        #self.root.ids.vid.texture = texture
 
 if __name__ == '__main__':
     PingApp().run()
